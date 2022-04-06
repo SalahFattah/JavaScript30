@@ -60,11 +60,7 @@
 <script>
   let notes=document.querySelectorAll(".key");
   let aud=document.querySelectorAll("audio");
-  // aud.forEach(i=>console.log(i.getAttribute("data-key",)));
-  // console.log(notes);
-  // window.addEventListener('keydown',e=>{
-  //   console.log(e.keyCode);
-  // });
+ 
   let noteNums=[];
   notes.forEach(note=>{
      noteNums.push(+note.getAttribute('data-key'));
@@ -72,27 +68,12 @@
   console.log(noteNums);
     window.addEventListener('keydown',e=>{
       if(noteNums.includes(e.keyCode)){
-        console.log([...aud].filter(i=>i.getAttribute("data-key")==e.keyCode)[0].setAttribute("autoplay","autoplay"));
-        // console.log(aud);
-        // console.log("match");
-
+        let oneAud=[...aud].filter(i=>i.getAttribute("data-key")==e.keyCode)[0];
+        oneAud.play();
         
-
-      }else {console.log("not match")};
+        
+      }
     });
-
-    
-
-    // note.addEventListener('keydown',e=>{
-    //   console.log(e);
-    // })
-  // })
-  // test.addEventListener('click',()=>{
-  //   let aud=document.querySelector('audio');
-  //   console.log(aud);
-  //   // aud.setAttribute('controls','controls');
-  //   aud.setAttribute("autoplay","autoplay");
-  // })
 </script>
 
 
