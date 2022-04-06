@@ -58,14 +58,35 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  let test=document.querySelector(".key");
-  console.log(test);
-  test.addEventListener('click',()=>{
-    let aud=document.querySelector('audio');
-    console.log(aud);
-    aud.setAttribute('controls','controls');
-    aud.setAttribute("autoplay","autoplay");
-  })
+  let notes=document.querySelectorAll(".key");
+  // console.log(notes);
+  // window.addEventListener('keydown',e=>{
+  //   console.log(e.keyCode);
+  // });
+  let noteNums=[];
+  notes.forEach(note=>{
+     noteNums.push(+note.getAttribute('data-key'));
+  });
+  console.log(noteNums);
+    window.addEventListener('keydown',e=>{
+      if(noteNums.includes(e.keyCode)){
+       
+        
+        console.log("match");
+      }else {console.log("not match")};
+    });
+    
+
+    // note.addEventListener('keydown',e=>{
+    //   console.log(e);
+    // })
+  // })
+  // test.addEventListener('click',()=>{
+  //   let aud=document.querySelector('audio');
+  //   console.log(aud);
+  //   // aud.setAttribute('controls','controls');
+  //   aud.setAttribute("autoplay","autoplay");
+  // })
 </script>
 
 
