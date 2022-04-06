@@ -59,20 +59,29 @@
 
 <script>
   let notes=document.querySelectorAll(".key");
-  let aud=document.querySelectorAll("audio");
- 
-  let noteNums=[];
+  // let aud=document.querySelectorAll("audio");
   notes.forEach(note=>{
-     noteNums.push(+note.getAttribute('data-key'));
-  });
-  console.log(noteNums);
+    note.addEventListener('transitionend',()=>{
+      note.classList.remove("playing");
+    })
+  })
+ 
+  // let noteNums=[];
+  // notes.forEach(note=>{
+  //    noteNums.push(+note.getAttribute('data-key'));
+  // });
+
     window.addEventListener('keydown',e=>{
-      if(noteNums.includes(e.keyCode)){
-        let oneAud=[...aud].filter(i=>i.getAttribute("data-key")==e.keyCode)[0];
+      // if(noteNums.includes(e.keyCode)){
+        let oneAud=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        if(!oneAud) return;
+        // console.log(oneAud);
+        // let oneAud=[...aud].filter(i=>i.getAttribute("data-key")==e.keyCode)[0];
+        oneAud.currentTime=0;//reset audio
         oneAud.play();
-        
-        
-      }
+        let letter=document.querySelector(`div[data-key="${e.keyCode}"]`);
+        letter.classList.add("playing"); 
+      // }
     });
 </script>
 
