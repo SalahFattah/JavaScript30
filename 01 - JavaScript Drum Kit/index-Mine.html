@@ -59,6 +59,8 @@
 
 <script>
   let notes=document.querySelectorAll(".key");
+  let aud=document.querySelectorAll("audio");
+  // aud.forEach(i=>console.log(i.getAttribute("data-key",)));
   // console.log(notes);
   // window.addEventListener('keydown',e=>{
   //   console.log(e.keyCode);
@@ -70,11 +72,15 @@
   console.log(noteNums);
     window.addEventListener('keydown',e=>{
       if(noteNums.includes(e.keyCode)){
-       
+        console.log([...aud].filter(i=>i.getAttribute("data-key")==e.keyCode)[0].setAttribute("autoplay","autoplay"));
+        // console.log(aud);
+        // console.log("match");
+
         
-        console.log("match");
+
       }else {console.log("not match")};
     });
+
     
 
     // note.addEventListener('keydown',e=>{
