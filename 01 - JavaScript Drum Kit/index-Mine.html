@@ -62,6 +62,8 @@
   // let aud=document.querySelectorAll("audio");
   notes.forEach(note=>{
     note.addEventListener('transitionend',()=>{
+      //if i used (this) here it won't work because arrow functions inherit
+      //this from parent scope
       note.classList.remove("playing");
     })
   })
